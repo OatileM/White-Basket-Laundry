@@ -1,0 +1,467 @@
+/* 
+ * White Basket Laundry - Styles
+ * Developer Notes: 
+ * - Mobile-first responsive design
+ * - CSS Grid and Flexbox for layouts
+ * - CSS custom properties for easy theme changes
+ * - Smooth animations and transitions
+ * - Cross-browser compatibility
+ */
+
+/* CSS Custom Properties - Easy to modify colors and spacing */
+:root {
+    --primary-color: #2c5aa0;
+    --secondary-color: #f8f9fa;
+    --accent-color: #25d366; /* WhatsApp green */
+    --text-dark: #333333;
+    --text-light: #666666;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.2);
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+    --max-width: 1200px;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--secondary-color);
+    overflow-x: hidden;
+}
+
+/* Container */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.header {
+    background: var(--white);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    animation: slideDown 0.6s ease-out;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    gap: 1rem;
+}
+
+.logo {
+    height: 100px;
+    width: auto;
+    transition: var(--transition);
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.company-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: -0.5px;
+}
+
+/* Main Content */
+.main-content {
+    min-height: calc(100vh - 200px);
+}
+
+/* Hero Section with Rotating Background */
+.hero {
+    background: linear-gradient(135deg, rgba(44, 90, 160, 0.4) 0%, rgba(30, 58, 95, 0.5) 100%), url('Background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--white);
+    padding: 4rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: backgroundRotate 15s infinite;
+}
+
+/* Background rotation animation */
+@keyframes backgroundRotate {
+    0%, 33% {
+        background-image: linear-gradient(135deg, rgba(44, 90, 160, 0.4) 0%, rgba(30, 58, 95, 0.5) 100%), url('Background.png');
+    }
+    34%, 66% {
+        background-image: linear-gradient(135deg, rgba(44, 90, 160, 0.4) 0%, rgba(30, 58, 95, 0.5) 100%), url('Background 2.png');
+    }
+    67%, 100% {
+        background-image: linear-gradient(135deg, rgba(44, 90, 160, 0.4) 0%, rgba(30, 58, 95, 0.5) 100%), url('Background 3.png');
+    }
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Story Section */
+.story-section {
+    padding: 4rem 0;
+    background: var(--white);
+    animation: fadeIn 0.8s ease-out;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+.story-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.story-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.story-text.highlight {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1.5rem;
+    text-align: left;
+    margin-top: 2rem;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 4rem 0;
+    background: var(--secondary-color);
+}
+
+.contact-content {
+    text-align: center;
+}
+
+.contact-methods {
+    margin-top: 2rem;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--accent-color);
+    color: var(--white);
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.whatsapp-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.whatsapp-btn:hover::before {
+    left: 100%;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    background: #128c7e;
+}
+
+.whatsapp-icon {
+    width: 24px;
+    height: 24px;
+    animation: pulse 2s infinite;
+}
+
+.phone-number {
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+}
+
+/* Footer */
+.footer {
+    background: var(--text-dark);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.footer-text {
+    opacity: 0.8;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Responsive Design - Mobile First */
+
+/* Mobile responsiveness for hero background */
+@media (max-width: 768px) {
+    .hero {
+        background-attachment: scroll; /* Better performance on mobile */
+    }
+}
+
+/* Small devices (phones, 576px and down) */
+@media (max-width: 576px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .story-text {
+        font-size: 1rem;
+    }
+    
+    .story-text.highlight {
+        font-size: 1.1rem;
+        text-align: center;
+        border-left: none;
+        border-top: 4px solid var(--accent-color);
+        padding-left: 0;
+        padding-top: 1rem;
+    }
+    
+    .whatsapp-btn {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1.5rem 1rem;
+    }
+    
+    .phone-number {
+        font-size: 0.9rem;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .hero {
+        padding: 6rem 0;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .story-section {
+        padding: 5rem 0;
+    }
+    
+    .contact-section {
+        padding: 5rem 0;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .story-text {
+        font-size: 1.2rem;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .hero {
+        padding: 8rem 0;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+    .hero {
+        padding: 2rem 0;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .story-section,
+    .contact-section {
+        padding: 3rem 0;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #000080;
+        --text-light: #000000;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .hero {
+        animation: none !important;
+        background-image: linear-gradient(135deg, rgba(44, 90, 160, 0.4) 0%, rgba(30, 58, 95, 0.5) 100%), url('Background.png') !important;
+    }
+    
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Print styles */
+@media print {
+    .header,
+    .footer,
+    .whatsapp-btn {
+        display: none;
+    }
+    
+    .hero {
+        background: none;
+        color: var(--text-dark);
+    }
+    
+    .story-section {
+        page-break-inside: avoid;
+    }
+}
