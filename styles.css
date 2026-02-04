@@ -64,16 +64,19 @@ body {
     align-items: center;
     padding: 1rem 0;
     gap: 1rem;
+    flex-wrap: nowrap;
 }
 
 .logo {
     height: 100px;
     width: auto;
     transition: var(--transition);
+    animation: logoFloat 3s ease-in-out infinite;
 }
 
 .logo:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) rotate(2deg);
+    animation-play-state: paused;
 }
 
 .company-name {
@@ -81,6 +84,7 @@ body {
     font-weight: 700;
     color: var(--primary-color);
     letter-spacing: -0.5px;
+    animation: textGlow 4s ease-in-out infinite alternate;
 }
 
 /* Main Content */
@@ -314,6 +318,26 @@ body {
     }
 }
 
+/* Logo floating animation */
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Text glow animation */
+@keyframes textGlow {
+    0% {
+        text-shadow: 0 0 5px rgba(44, 90, 160, 0.3);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(44, 90, 160, 0.6), 0 0 15px rgba(44, 90, 160, 0.4);
+    }
+}
+
 /* Responsive Design - Mobile First */
 
 /* Mobile responsiveness for hero background */
@@ -327,6 +351,21 @@ body {
 @media (max-width: 576px) {
     .container {
         padding: 0 15px;
+    }
+    
+    .logo-container {
+        padding: 0.75rem 0;
+        gap: 0.75rem;
+    }
+    
+    .logo {
+        height: 50px;
+    }
+    
+    .company-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        line-height: 1.2;
     }
     
     .hero-title {
