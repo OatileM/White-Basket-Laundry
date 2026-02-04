@@ -93,13 +93,14 @@ body {
     background: linear-gradient(135deg, rgba(44, 90, 160, 0.4) 0%, rgba(30, 58, 95, 0.5) 100%), url('Background.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     color: var(--white);
     padding: 4rem 0;
     text-align: center;
     position: relative;
     overflow: hidden;
     animation: backgroundRotate 15s infinite;
+    min-height: 70vh;
 }
 
 /* Background rotation animation */
@@ -395,6 +396,14 @@ body {
     
     .story-text {
         font-size: 1.2rem;
+    }
+}
+
+/* Large screens (27+ inch monitors) */
+@media (min-width: 1440px) {
+    .hero {
+        min-height: 60vh;
+        padding: 6rem 0;
     }
 }
 
