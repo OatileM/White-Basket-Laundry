@@ -98,7 +98,11 @@ body {
     transform: translateY(-2px);
 }
 
-/* Burger Menu */
+/* Burger Menu - CSS Only Approach */
+.burger-toggle {
+    display: none;
+}
+
 .burger-menu {
     display: none;
     flex-direction: column;
@@ -111,12 +115,28 @@ body {
     width: 25px;
     height: 3px;
     background: var(--primary-color);
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    display: block;
+    transform-origin: center;
+}
+
+/* Burger Animation */
+.burger-toggle:checked + .burger-menu span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.burger-toggle:checked + .burger-menu span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.burger-toggle:checked + .burger-menu span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* Mobile Navigation */
 .mobile-nav {
-    display: none;
+    display: flex;
     position: absolute;
     top: 100%;
     left: 0;
@@ -125,23 +145,43 @@ body {
     box-shadow: var(--shadow);
     flex-direction: column;
     z-index: 999;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.mobile-nav.active {
-    display: flex;
+.burger-toggle:checked + .burger-menu + .mobile-nav {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .mobile-nav a {
     padding: 1rem;
     text-decoration: none;
     color: var(--text-dark);
-    border-bottom: 1px solid #eee;
-    transition: var(--transition);
+    border-bottom: 1px solid rgba(44, 90, 160, 0.1);
+    transition: all 0.3s ease;
+    transform: translateX(-100%);
+    animation: slideInLinks 0.5s ease forwards;
 }
+
+.mobile-nav a:nth-child(1) { animation-delay: 0.1s; }
+.mobile-nav a:nth-child(2) { animation-delay: 0.2s; }
+.mobile-nav a:nth-child(3) { animation-delay: 0.3s; }
 
 .mobile-nav a:hover {
     background: rgba(44, 90, 160, 0.1);
     color: var(--primary-color);
+    transform: translateX(10px);
+}
+
+@keyframes slideInLinks {
+    to {
+        transform: translateX(0);
+    }
 }
 
 .logo {

@@ -50,19 +50,20 @@
                 </nav>
                 
                 <!-- Mobile Burger Menu -->
-                <div class="burger-menu" onclick="toggleMobileNav()">
+                <input type="checkbox" id="burger-toggle" class="burger-toggle">
+                <label for="burger-toggle" class="burger-menu">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </label>
+                
+                <!-- Mobile Navigation -->
+                <nav class="mobile-nav">
+                    <a href="#home" onclick="document.getElementById('burger-toggle').checked = false">Home</a>
+                    <a href="#story" onclick="document.getElementById('burger-toggle').checked = false">Our Story</a>
+                    <a href="#contact" onclick="document.getElementById('burger-toggle').checked = false">Contact</a>
+                </nav>
             </div>
-            
-            <!-- Mobile Navigation -->
-            <nav class="mobile-nav" id="mobileNav">
-                <a href="#home" onclick="closeMobileNav()">Home</a>
-                <a href="#story" onclick="closeMobileNav()">Our Story</a>
-                <a href="#contact" onclick="closeMobileNav()">Contact</a>
-            </nav>
         </div>
     </header>
 

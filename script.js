@@ -8,16 +8,16 @@
  * - Cross-browser compatible
  */
 
-// Simple burger menu functions
-function toggleMobileNav() {
-    const mobileNav = document.getElementById('mobileNav');
-    mobileNav.classList.toggle('active');
-}
+// Simple burger menu functions - Not needed with CSS-only approach
+// function toggleMobileNav() {
+//     const mobileNav = document.getElementById('mobileNav');
+//     mobileNav.classList.toggle('active');
+// }
 
-function closeMobileNav() {
-    const mobileNav = document.getElementById('mobileNav');
-    mobileNav.classList.remove('active');
-}
+// function closeMobileNav() {
+//     const mobileNav = document.getElementById('mobileNav');
+//     mobileNav.classList.remove('active');
+// }
 
 document.addEventListener('DOMContentLoaded', function() {
     
