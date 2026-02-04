@@ -8,6 +8,17 @@
  * - Cross-browser compatible
  */
 
+// Simple burger menu functions
+function toggleMobileNav() {
+    const mobileNav = document.getElementById('mobileNav');
+    mobileNav.classList.toggle('active');
+}
+
+function closeMobileNav() {
+    const mobileNav = document.getElementById('mobileNav');
+    mobileNav.classList.remove('active');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize all functionality
@@ -15,6 +26,39 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScrolling();
     initMobileOptimizations();
     initAccessibility();
+    initMobileNavigation();
+    
+    /**
+     * Mobile navigation functionality
+     */
+    function initMobileNavigation() {
+        const burgerMenu = document.querySelector('.burger-menu');
+        const mobileNav = document.querySelector('.mobile-nav');
+        
+        console.log('Burger menu:', burgerMenu);
+        console.log('Mobile nav:', mobileNav);
+        
+        if (burgerMenu && mobileNav) {
+            burgerMenu.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Burger clicked');
+                this.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+                console.log('Classes toggled');
+            });
+            
+            // Close mobile nav when clicking on a link
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    burgerMenu.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                });
+            });
+        } else {
+            console.log('Elements not found');
+        }
+    }
     
     /**
      * Scroll-triggered animations using Intersection Observer
@@ -187,8 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.head.appendChild(logoPreload);
     }
     
-    // Initialize performance optimizations
-    initPerformanceOptimizations();
+
     
     /**
      * Error handling and fallbacks

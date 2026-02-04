@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .burger-menu {
+            display: flex;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            gap: 4px;
+        }
+        .burger-line {
+            width: 25px;
+            height: 3px;
+            background: blue;
+            border-radius: 2px;
+        }
+        .mobile-nav {
+            display: none;
+            background: white;
+            padding: 1rem;
+        }
+        .mobile-nav.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <button class="burger-menu">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+    </button>
+    
+    <nav class="mobile-nav">
+        <a href="#">Home</a>
+        <a href="#">Story</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <script>
+        document.querySelector('.burger-menu').addEventListener('click', function() {
+            console.log('Clicked!');
+            document.querySelector('.mobile-nav').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

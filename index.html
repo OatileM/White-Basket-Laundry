@@ -36,10 +36,33 @@
     <!-- Header Section with Logo -->
     <header class="header">
         <div class="container">
-            <div class="logo-container">
-                <img src="Logo.png" alt="White Basket Laundry Logo" class="logo">
-                <h1 class="company-name">White Basket Laundry</h1>
+            <div class="navbar">
+                <div class="logo-container">
+                    <img src="Logo.png" alt="White Basket Laundry Logo" class="logo">
+                    <h1 class="company-name">White Basket Laundry</h1>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="nav-menu">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#story" class="nav-link">Our Story</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+                
+                <!-- Mobile Burger Menu -->
+                <div class="burger-menu" onclick="toggleMobileNav()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
+            
+            <!-- Mobile Navigation -->
+            <nav class="mobile-nav" id="mobileNav">
+                <a href="#home" onclick="closeMobileNav()">Home</a>
+                <a href="#story" onclick="closeMobileNav()">Our Story</a>
+                <a href="#contact" onclick="closeMobileNav()">Contact</a>
+            </nav>
         </div>
     </header>
 
@@ -47,7 +70,7 @@
     <main class="main-content">
         <div class="container">
             <!-- Hero Section -->
-            <section class="hero">
+            <section class="hero" id="home">
                 <div class="hero-content">
                     <h2 class="hero-title">Premium Garment Care</h2>
                     <p class="hero-subtitle">Crafting a laundry experience tailored to your unique needs</p>
@@ -55,7 +78,7 @@
             </section>
 
             <!-- Our Story Section -->
-            <section class="story-section">
+            <section class="story-section" id="story">
                 <h2 class="section-title">Our Story</h2>
                 <div class="story-content">
                     <p class="story-text">
@@ -71,7 +94,7 @@
             </section>
 
             <!-- Contact Section -->
-            <section class="contact-section">
+            <section class="contact-section" id="contact">
                 <div class="contact-content">
                     <h2 class="section-title">Get In Touch</h2>
                     <div class="contact-methods">
